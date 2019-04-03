@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+
+	<link rel="stylesheet" href="style.css">
+	<title>Random Comic Generator</title>
+	<style>
+		#check-generate {
+			color: #b4b4b4;
+		}
+		#check-generate:hover {
+			color: #4a4a4a;
+		}
+		#check-archive {
+			color: #4a4a4a;
+		}
+	</style>
+</head>
+<body>
+	<div class="alignment">
+		<div class="aligning" id="new-thing">
+		</div>
+		<div class="aligning">
+			<img src="commutatus-copy.png" alt="Commutatus-Logo2">
+		</div>
+		<div id="navigation-menu">
+			<div class="checkClick">
+				<a id="check-generate" class="generate-archive" href="random_comic_NoRepeat.html">Generator</a>
+			</div>
+			<div class="checkClick">
+				<a id="check-archive" class="generate-archive" href="archive.html">Archive</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="main-view"></div>
+    <script>
+
+        pushContent = JSON.parse(localStorage.setComicData);
+
+        for (let i = 0; i < pushContent.length; i++) {
+
+					 const getMainView = document.getElementById('main-view');
+
+					 const displayView = document.createElement('div');
+					 displayView.setAttribute('id', 'display-view-content');
+
+					 getMainView.appendChild(displayView);
+
+					 const leftView = document.createElement('div');
+					 leftView.setAttribute('id', 'left-view');
+
+					 displayView.appendChild(leftView);
+
+					 const rightView = document.createElement('div');
+					 rightView.setAttribute('id', 'right-view');
+
+					 displayView.appendChild(rightView);
+
+					 const vertcalLine = document.createElement('div');
+					 vertcalLine.setAttribute('id', 'vertical-line');
+
+					 rightView.appendChild(vertcalLine);
+
+					 const rightAlign = document.createElement('div');
+					 rightAlign.setAttribute('id', 'right-align');
+
+					 rightView.appendChild(rightAlign);
+
+					 //create number
+					 const headNumber = document.createElement('h2');
+					 let addNumber = document.createTextNode(pushContent[i].comicNumber);
+					 headNumber.appendChild(addNumber);
+
+					 leftView.appendChild(headNumber);
+
+					 //create dot
+					 const numberDot = document.createElement('p');
+					 let addDot = document.createTextNode(".");
+					 numberDot.appendChild(addDot);
+
+					 leftView.appendChild(numberDot);
+
+					 //create title
+					 const headTitle = document.createElement('h3');
+					 let addTitle = document.createTextNode(pushContent[i].comicTitle);
+					 headTitle.appendChild(addTitle);
+
+					 leftView.appendChild(headTitle);
+
+					 //create last viewed text
+					 const paraTag = document.createElement("p");
+					 paraTag.setAttribute('class', 'one');
+					 let addPara = document.createTextNode("Last viewed:");
+					 paraTag.appendChild(addPara);
+
+					 const dayInline = document.createElement("div");
+				 	 dayInline.setAttribute('id', 'days-inline');
+				   dayInline.appendChild(paraTag);
+
+					 rightAlign.appendChild(dayInline);
+
+					 const dayInline2 = document.createElement("div");
+					 dayInline2.setAttribute('id','days-inline');
+					 rightAlign.appendChild(dayInline2);
+
+					 		// create Date
+				   const readDate = document.createElement("span");
+					 readDate.setAttribute('class', 'two');
+				   let addDate = document.createTextNode(pushContent[i].getDate);
+				   readDate.appendChild(addDate);
+
+					 dayInline2.appendChild(readDate);
+
+					 // create space
+					 const createSpace = document.createElement("span");
+					 createSpace.setAttribute('class', 'two');
+					 let addSpace = document.createTextNode(" ");
+					 createSpace.appendChild(addSpace);
+
+					 dayInline2.appendChild(createSpace);
+
+				   // create Month
+				   const readMonth = document.createElement("span");
+					 readMonth.setAttribute('class', 'two');
+				   let addMonth = document.createTextNode(pushContent[i].getMonth);
+				   readMonth.appendChild(addMonth);
+
+					 dayInline2.appendChild(readMonth);
+
+					 // create space
+					const createSpace2 = document.createElement("span");
+					createSpace2.setAttribute('class', 'two');
+					let addSpace2 = document.createTextNode(" ");
+					createSpace2.appendChild(addSpace2);
+
+					dayInline2.appendChild(createSpace2);
+
+				   // create Year
+				   const readYear = document.createElement("span");
+					 readYear.setAttribute('class', 'two');
+				   let addYear = document.createTextNode(pushContent[i].getYear);
+				   readYear.appendChild(addYear);
+
+					 dayInline2.appendChild(readYear);
+
+					 const dayInline3 = document.createElement("div");
+					 dayInline3.setAttribute('id', 'days-inline');
+					 rightAlign.appendChild(dayInline3);
+
+				   // create Hour
+				   const readHour = document.createElement("span");
+					 readHour.setAttribute('class', 'three');
+				   let addHour = document.createTextNode(pushContent[i].getHours);
+				   readHour.appendChild(addHour);
+
+					 dayInline3.appendChild(readHour);
+
+					 // create colon :
+					 const createColon = document.createElement("span");
+					 createColon.setAttribute('class', 'three');
+					 let addColon = document.createTextNode(":");
+					 createColon.appendChild(addColon);
+
+					 dayInline3.appendChild(createColon);
+
+				   // create Minute
+				   const readMinute = document.createElement("span");
+					 readMinute.setAttribute('class', 'three');
+				   let addMinute = document.createTextNode(pushContent[i].getMinutes);
+				   readMinute.appendChild(addMinute);
+
+					 dayInline3.appendChild(readMinute);
+
+					 // create colon :
+					 const createColon2 = document.createElement("span");
+					 createColon2.setAttribute('class', 'three');
+					 let addColon2 = document.createTextNode(":");
+					 createColon2.appendChild(addColon2);
+
+						dayInline3.appendChild(createColon2);
+
+				   // create Second
+				   const readSecond = document.createElement("span");
+					 readSecond.setAttribute('class', 'three');
+				   let addSecond = document.createTextNode(pushContent[i].getSeconds);
+				   readSecond.appendChild(addSecond);
+
+					 dayInline3.appendChild(readSecond);
+        }
+
+    </script>
+</body>
+
+</html>

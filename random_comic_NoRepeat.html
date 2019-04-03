@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+
+	<link rel="stylesheet" href="style.css">
+	<title>Random Comic Generator</title>
+	<style>
+		#check-archive {
+			color: #b4b4b4;
+		}
+		#check-archive:hover {
+			color: #4a4a4a;
+		}
+		#check-generate  {
+			color: #4a4a4a;
+		}
+	</style>
+</head>
+<body onload="keepValues()">
+	<script src="script.js"></script>
+	<div class="alignment">
+		<div class="aligning" id="new-thing">
+		</div>
+		<div class="aligning">
+			<img src="commutatus-copy.png" alt="Commutatus-Logo2">
+		</div>
+		<div id="navigation-menu">
+			<div class="checkClick">
+				<a id="check-generate" class="generate-archive" href="random_comic_NoRepeat.html">Generator</a>
+			</div>
+			<div class="checkClick">
+				<a id="check-archive" class="generate-archive" href="archive.html">Archive</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="root-element">
+		<div class="elements">
+				<button id="button-data" onclick="getComicData(Math.floor(Math.random()* 1000))">Generate</button>
+		</div>
+		<div class="elements">
+				<div id="output"></div>
+		</div>
+	</div>
+</body>
+</html>
