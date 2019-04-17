@@ -39,11 +39,13 @@
 
 	<div class="root-element">
 		<div class="elements">
-				<button id="button-data" onclick="getComicData(Math.floor(Math.random()* 1000))">Generate</button>
+				<button id="button-data" onclick="getComicData()" onload="refresh()">Generate</button>
 		</div>
 		<div class="elements">
 				<div id="output"></div>
+				<div style="display: none" id="loader"></div>
 		</div>
 	</div>
+	<div id="myDiv" class="animate-bottom"></div>
 </body>
 </html>
