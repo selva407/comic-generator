@@ -2,11 +2,9 @@ let getExitData = [];
 
 let randomNumber;
 
-let n=5;
+const n=4;
 
 let pushContent = [];
-
-let getValue = [];
 
 let d = new Date();
 
@@ -19,16 +17,25 @@ function keepValues() {
 }
 
   function getComicData() {
-    getValue.splice(0,4);
-    // getValue = [];
-    for(let i = 1; i < n; i++) {
+    for(let i = 0; i < n; i++) {
             getData(Math.floor(Math.random() * 1000));
      }
-     // function getValuesNone() {
-     //   document.getElementById('output').style.display = "none";
-     // }
-     // getValuesNone();
+    document.getElementById("loader-two").style.display = "block";
   }
+  function yHandler() {
+  	let wrap = document.getElementById('wrap');
+  	let contentHeight = wrap.offsetHeight;
+  	let yOffset = window.pageYOffset;
+  	let y = yOffset + window.innerHeight;
+  	if(y >= contentHeight){
+      document.getElementById("loader").style.display = "block";
+        for (let i = 0; i < n; i++) {
+          getData(Math.floor(Math.random() * 1000));
+      }
+  	}
+  }
+  window.onscroll = yHandler;
+
   function getData(randomNumber) {
     promise  = new Promise(function(resolve, reject) {
       fetch(`https://xkcd.now.sh/${randomNumber}`)
@@ -44,11 +51,8 @@ function keepValues() {
         </div>
         `;
         console.log(json);
-        // document.getElementById('output').innerHTML += output;
         console.log(output);
-        getValue.push(output);
-        console.log(getValue);
-        document.getElementById('output').innerHTML = getValue;
+        document.getElementById('output').innerHTML += output;
         resolve(output);
 
         comicData = {'comicNumber':json.num, 'comicTitle':json.title, 'getYear':d.getFullYear(), 'getMonth':months[d.getMonth()], 'getDate':d.getDate(), 'getHours':d.getHours(), 'getMinutes':d.getMinutes(), 'getSeconds':d.getSeconds()};
@@ -56,8 +60,6 @@ function keepValues() {
         localStorage.setComicData = JSON.stringify(pushContent);
             })
         });
-
-        document.getElementById("loader").style.display = "block";
         //console.log(promise);
           promise.then(function(value) {
             console.log("The guessing is good", value);
@@ -67,5 +69,6 @@ function keepValues() {
         // console.log("I have log first, Because i'm not asynchronous right..");
         function displayNone() {
           document.getElementById("loader").style.display = "none";
+          document.getElementById('loader-two').style.display = "none";
         }
       }
